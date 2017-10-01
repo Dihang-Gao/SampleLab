@@ -56,8 +56,8 @@ void ExitError(ErrorCode ec, char const * const message,
 	char const * const appName)
 {
 	PrintErrorCode(ec);
-	if (message && strlen(message)) PrintError(message);
-	if (debug && strlen(debug))
+	if (message && strlen(message)) PrintError(message); //Check that exists before using
+	if (debug && strlen(debug)) //Ditto.  Ansi colors depend on macro in sattings
 	{
 		fprintf(stderr, ANSI_COLOR_YELLOW "Debug: " ANSI_COLOR_RESET);
 		fprintf(stderr, "%s", debug);
@@ -73,6 +73,6 @@ void ExitError(ErrorCode ec, char const * const message,
 	fflush(stdout);
 	fgetc(stdin);
 #endif
-
+	//Exit program with error code. (Does not return from this fctn)
 	exit(ec);
 }

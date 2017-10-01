@@ -23,7 +23,7 @@
 
 //ARGUMENTS macro is for my PrintUsage functionality (see util.h/c)
 #undef ARGUMENTS
-#define ARGUMENTS "FileName <letter> <number> (last 2 arguments optional)"
+#define ARGUMENTS "FileName <letter> <number>\n     (Last 2 arguments optional)"
 
 //Settings for ansi colors macro above
 #ifndef ANSI_COLORS

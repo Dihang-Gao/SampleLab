@@ -31,11 +31,12 @@
 
 int main(int argc, char** argv)
 {
-	char debugbuffer[255];
+	char debugbuffer[255] = ""; //Memory area for storing debug messages
 	//Initial sanity check on number of arguments
 	
 	if (argc < 2)
 	{
+		//Create debug message only if expecting to use it.
 		if (DEBUG) snprintf(debugbuffer, sizeof(debugbuffer), "Argument count: %d", argc);
 
 		ExitError(ecTooFewArguments, "Expected a filename.",
@@ -43,13 +44,15 @@ int main(int argc, char** argv)
 			argv[0]);
 	}
 #ifdef DEBUG
-	fflush(stdin); //Make sure there's nothing lurking in the buffer.
-				   //printf("-------------------------------------------------------\n");
-				   //printf("If you got here, your program meets expectations.  Yay!\n");
-				   //printf("-------------------------------------------------------\n");
-	printf("             Press Enter to Exit:");
-	fgetc(stdin);
-#endif
+//Pause to avoid console closing in debug mode.
+	if (DEBUG)  //If DEBUG macro not 0
+	{
+		fflush(stdin); //Make sure there's nothing lurking in the buffer.
+		printf("\nPress Enter to Exit:");
+		fflush(stdout);
+		fgetc(stdin);
+	}
+#endif //DEBUG
 
 	return ecSuccess; //If we got here, all went well
 }
