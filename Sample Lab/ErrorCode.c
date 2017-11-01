@@ -6,8 +6,7 @@
 *  Date:       29 Sep 2017
 *  Course:     CMPE1700
 *  Instructor: AJ Armstrong
-*  Description: Implementation of methods for managing a
-*  structure containing statistical data about text file
+*  Description: Implementation of support functions for error codes.
 *  contents.  See "Line.h" for declarations.
 * *********************************************************/
 

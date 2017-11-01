@@ -16,9 +16,11 @@
 
 //Debug macro.  0 or 1.  If 1, additional
 //debugging features will be enabled at compile-time.
+//If this is defined (0 or 1), main will pause.
 #define DEBUG 1
 
 //Use ANSI Colors?  If below is defined, yes
+//Doesn't work on MS command windows. <Derisive sigh>
 //#define ANSI_COLORS
 
 //ARGUMENTS macro is for my PrintUsage functionality (see util.h/c)
