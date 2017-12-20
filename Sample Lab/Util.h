@@ -23,13 +23,15 @@ typedef enum {false = 0,true} bool;
 void PrintError(char const * const message);
 //Print an error code
 void PrintErrorCode(ErrorCode ec);
+//Print error code as well as message
+void PrintErrorCodeMessage(ErrorCode ec, char const * const message);
 //Print the usage message for the app (expects a
 //ARGUMENTS macro with a list of arguments)
 void PrintUsage(char const * const appname);
 //Exit with error, optionally printing debug info,
 //  usage message
-void ExitError(ErrorCode ec, char const * const message, 
-	char const * const debug,
-	char const * const appName);
+void ExitError(ErrorCode ec, char const * const message,
+               char const * const debug,
+               char const * const appName);
 
 #endif

@@ -17,62 +17,72 @@
 //Print an error message
 void PrintError(char const * const message)
 {
-	fprintf(stderr, ANSI_COLOR_RED "Error: " ANSI_COLOR_RESET);
-	fprintf(stderr, "%s", message);
-	fprintf(stderr, "\n");
-	fflush(stderr);
+    fprintf(stderr, ANSI_COLOR_RED "Error: " ANSI_COLOR_RESET);
+    fprintf(stderr, "%s", message);
+    fprintf(stderr, "\n");
+    fflush(stderr);
 }
 
 void PrintErrorCode(ErrorCode ec)
 {
-	fprintf(stderr, ANSI_COLOR_RED "Error: " ANSI_COLOR_YELLOW);
-	fprintf(stderr, "%s" ANSI_COLOR_RESET, ErrorMessage(ec));
-	fprintf(stderr, "\n");
-	fflush(stderr);
+    fprintf(stderr, ANSI_COLOR_RED "Error: " ANSI_COLOR_YELLOW);
+    fprintf(stderr, "%s" ANSI_COLOR_RESET, ErrorMessage(ec));
+    fprintf(stderr, "\n");
+    fflush(stderr);
+}
+
+void PrintErrorCodeMessage(ErrorCode ec, char const * const message)
+{
+    fprintf(stderr, ANSI_COLOR_RED "Error: " ANSI_COLOR_YELLOW);
+    fprintf(stderr, "%s" ANSI_COLOR_RESET, ErrorMessage(ec));
+    if(message && strlen(message) > 0)
+        fprintf(stderr, " - %s", message);
+    fprintf(stderr, "\n");
+    fflush(stderr);
 }
 
 //Print the usage message for the app (expects an
 //ARGUMENTS macro with list of arguments)
 void PrintUsage(char const * const appname)
 {
-	printf(ANSI_COLOR_BLUE "Usage: " ANSI_COLOR_RESET);
-	//TODO:  Ensure ARGUMENTS message macro is defined
-	printf("%s %s\n", appname, ARGUMENTS);
-	fflush(stdout);
+    printf(ANSI_COLOR_BLUE "Usage: " ANSI_COLOR_RESET);
+    //TODO:  Ensure ARGUMENTS message macro is defined
+    printf("%s %s\n", appname, ARGUMENTS);
+    fflush(stdout);
 }
 
 /*********************************************************************
-* Function     ExitError
-* Arguments:   ErrorCode ec - enumeration defining what the error type is
-*              char * message - string error message
-*              char * debug - string debug information
-*			   bool printUsage - whether or not to print the usage message
-*
-* Returns:     void
-* Description: Prints formatted error messages and exits with error code.
-* ******************************************************************/
+ * Function     ExitError
+ * Arguments:   ErrorCode ec - enumeration defining what the error type is
+ *              char * message - string error message
+ *              char * debug - string debug information
+ *              bool printUsage - whether or not to print the usage message
+ *
+ * Returns:     void
+ * Description: Prints formatted error messages and exits with error code.
+ * ******************************************************************/
 void ExitError(ErrorCode ec, char const * const message,
-	char const * const debug,
-	char const * const appName)
+               char const * const debug,
+               char const * const appName)
 {
-	PrintErrorCode(ec);
-	if (message && strlen(message)) PrintError(message); //Check that exists before using
-	if (debug && strlen(debug)) //Ditto.  Ansi colors depend on macro in sattings
-	{
-		fprintf(stderr, ANSI_COLOR_YELLOW "Debug: " ANSI_COLOR_RESET);
-		fprintf(stderr, "%s", debug);
-		fprintf(stderr, "\n");
-		fflush(stderr);
-	}
-	if (appName && strlen(appName)) PrintUsage(appName);
+    if (message && strlen(message)) PrintErrorCodeMessage(ec,message); //Check that exists before using
+    else PrintErrorCode(ec);
+    if (debug && strlen(debug)) //Ditto.  Ansi colors depend on macro in Settings.h
+    {
+        fprintf(stderr, ANSI_COLOR_YELLOW "Debug: " ANSI_COLOR_RESET);
+        fprintf(stderr, "%s", debug);
+        fprintf(stderr, "\n");
+        fflush(stderr);
+    }
+    if (appName && strlen(appName)) PrintUsage(appName);
 
-	//Exit program with error
+    //Exit program with error
 #ifdef DEBUG
-	fflush(stdin); //Make sure there's nothing lurking in the buffer.
-	printf("\nPress Enter to Exit:");
-	fflush(stdout);
-	fgetc(stdin);
+    fflush(stdin); //Make sure there's nothing lurking in the buffer.
+    printf("\nPress Enter to Exit:");
+    fflush(stdout);
+    fgetc(stdin);
 #endif
-	//Exit program with error code. (Does not return from this fctn)
-	exit(ec);
+    //Exit program with error code. (Does not return from this fctn)
+    exit(ec);
 }

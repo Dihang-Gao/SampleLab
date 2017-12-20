@@ -21,7 +21,7 @@
 
 //Use ANSI Colors?  If below is defined, yes
 //Doesn't work on MS command windows. <Derisive sigh>
-//#define ANSI_COLORS
+#define ANSI_COLORS
 
 //ARGUMENTS macro is for my PrintUsage functionality (see util.h/c)
 #undef ARGUMENTS
