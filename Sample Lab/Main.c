@@ -24,7 +24,11 @@
  * Function: main
  * Arguments:int argc - number of arguments (1 implicit arg always present)
  *           char** argv - Array of strings containing com. line arguments
- * Returns:  int - Program success status for POSIX os
+ * API:      arg 1 - Filename of text file to open an analyze
+ *           arg 2 - (Optional) - either (a) line number (line information) or
+ *                    (b) a character indicating the specific data desired
+ *           arg 3 - (Optional) - line number if 2b selected above.
+ * Returns:  int - Program success status for POSIX OS
  * Description: Parses command-line arguments and passes output to
  *              console.
  * ******************************************************************/
@@ -43,7 +47,6 @@ int main(int argc, char** argv)
                   DEBUG ? debugbuffer : NULL,
                   argv[0]);
     }
-
 
 #ifdef DEBUG
 //Pause to avoid console closing in debug mode.

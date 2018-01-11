@@ -14,7 +14,13 @@
 #include <string.h>
 #include <stdlib.h>
 
-//Print an error message
+/*********************************************************************
+ * Function     PrintError
+ * Arguments:   char * message - string error message
+ *
+ * Returns:     void
+ * Description: Prints formatted error message from a string.
+ * ******************************************************************/
 void PrintError(char const * const message)
 {
     fprintf(stderr, ANSI_COLOR_RED "Error: " ANSI_COLOR_RESET);
@@ -23,6 +29,13 @@ void PrintError(char const * const message)
     fflush(stderr);
 }
 
+/*********************************************************************
+ * Function     PrintErrorCode
+ * Arguments:   ErrorCode ec - Enumerated error code (see ErrorCode.h)
+ *
+ * Returns:     void
+ * Description: Prints formatted error message from an error code
+ * ******************************************************************/
 void PrintErrorCode(ErrorCode ec)
 {
     fprintf(stderr, ANSI_COLOR_RED "Error: " ANSI_COLOR_YELLOW);
@@ -31,6 +44,15 @@ void PrintErrorCode(ErrorCode ec)
     fflush(stderr);
 }
 
+/*********************************************************************
+ * Function     PrintErrorCodeMessage
+ * Arguments:   ErrorCode ec - Enumerated error code (see ErrorCode.h)
+ *              char * message - String error message
+ *
+ * Returns:     void
+ * Description: Prints formatted error message from an error code in
+ *              addition to a provided string message.
+ * ******************************************************************/
 void PrintErrorCodeMessage(ErrorCode ec, char const * const message)
 {
     fprintf(stderr, ANSI_COLOR_RED "Error: " ANSI_COLOR_YELLOW);
@@ -41,8 +63,16 @@ void PrintErrorCodeMessage(ErrorCode ec, char const * const message)
     fflush(stderr);
 }
 
-//Print the usage message for the app (expects an
-//ARGUMENTS macro with list of arguments)
+/*********************************************************************
+ * Function     PrintUsage
+ * Arguments:   char * appname - Name of the application to use
+ *
+ * Returns:     void
+ * Description: Prints formatted usage message for a provide application
+ *              name.  Depends on an ARGUMENTS macro being set with the
+ *              list of arguments to the application and their description.
+ *              (See settings.h).
+ * ******************************************************************/
 void PrintUsage(char const * const appname)
 {
     printf(ANSI_COLOR_BLUE "Usage: " ANSI_COLOR_RESET);
@@ -65,7 +95,8 @@ void ExitError(ErrorCode ec, char const * const message,
                char const * const debug,
                char const * const appName)
 {
-    if (message && strlen(message)) PrintErrorCodeMessage(ec,message); //Check that exists before using
+    //Check that exists before using
+    if (message && strlen(message)) PrintErrorCodeMessage(ec,message);
     else PrintErrorCode(ec);
     if (debug && strlen(debug)) //Ditto.  Ansi colors depend on macro in Settings.h
     {

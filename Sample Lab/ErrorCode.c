@@ -20,16 +20,16 @@
 * ******************************************************************/
 char const * const ErrorMessage(ErrorCode ec)
 {
-	switch (ec)
-	{
-	case ecSuccess: return "Success";
-	case ecGeneralError: return "General Error";
-	case ecTooFewArguments: return "Too Few Arguments";
-	case ecTooManyArguments: return "Too Many Arguments";
-	case ecUnableToOpenFile: return "Unable to Open File";
-	case ecFileAccessError: return "File Access Error";
-	case ecTargetNotFound: return "Target Not Found";
-	case ecInvalidArgument: return "Invalid Argument";
-	default: return "Unknown Error";
-	}
+    switch (ec)
+    {
+    case ecSuccess: return "Success";
+    case ecGeneralError: return "General Error";
+    case ecTooFewArguments: return "Too Few Arguments";
+    case ecTooManyArguments: return "Too Many Arguments";
+    case ecUnableToOpenFile: return "Unable to Open File";
+    case ecFileAccessError: return "File Access Error";
+    case ecTargetNotFound: return "Target Not Found";
+    case ecInvalidArgument: return "Invalid Argument";
+    default: return "Unknown Error";
+    }
 }
