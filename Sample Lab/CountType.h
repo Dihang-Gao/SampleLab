@@ -16,13 +16,13 @@
 
 typedef enum CType
 {
-	Lines,
-	Words,
-	Characters,
-	Letters,
-	Digits,
-	Special,
-	Whitespace
+    Lines,
+    Words,
+    Characters,
+    Letters,
+    Digits,
+    Special,
+    Whitespace
 } CountType;
 
 

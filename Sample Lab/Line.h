@@ -19,12 +19,12 @@ typedef unsigned int uint;
 
 typedef struct
 {
-	uint wordCount; //Number of words
-	uint charCount; //Number of characters
-	uint alphaCount; //Number of letters
-	uint digitCount; //Number of digits
-	uint specCount; //Number of other types
-	uint whiteCount; //Number of whitespace chars
+    uint wordCount; //Number of words
+    uint charCount; //Number of characters
+    uint alphaCount; //Number of letters
+    uint digitCount; //Number of digits
+    uint specCount; //Number of other types
+    uint whiteCount; //Number of whitespace chars
 } Line;
 
 //Calculate statistics for a given line

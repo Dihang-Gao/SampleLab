@@ -16,8 +16,12 @@
 
 //Debug macro.  0 or 1.  If 1, additional
 //debugging features will be enabled at compile-time.
-//If this is defined (0 or 1), main will pause.
 #define DEBUG 1
+
+//force our debug macro high (as above) if environment is debug
+#ifdef _DEBUG
+#define DEBUG 1
+#endif //_DEBUG
 
 //Use ANSI Colors?  If below is defined, yes
 //Doesn't work on MS command windows. <Derisive sigh>
@@ -25,7 +29,8 @@
 
 //ARGUMENTS macro is for my PrintUsage functionality (see util.h/c)
 #undef ARGUMENTS
-#define ARGUMENTS "FileName <letter> <number>\n     (Last 2 arguments optional)"
+#define ARGUMENTS "FileName <letter> <number>\n"\
+                  "(Last 2 arguments optional)"
 
 //Settings for ansi colors macro above
 #ifndef ANSI_COLORS
