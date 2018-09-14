@@ -19,6 +19,7 @@
 #include "Util.h" //Utility functions
 #include "ErrorCode.h" //Definition of error codes ('ec' prefix)
 #include <stdio.h>
+#include <errno.h> //Support for POSIX error messages. Defines 'errno'
 
 /*********************************************************************
  * Function: main
@@ -30,15 +31,19 @@
  *           arg 3 - (Optional) - line number if 2b selected above.
  * Returns:  int - Program success status for POSIX OS
  * Description: Parses command-line arguments and passes output to
+
  *              console.
  * ******************************************************************/
 
 int main(int argc, char** argv)
 {
     char debugbuffer[255] = ""; //Memory area for storing debug messages
-    //Initial sanity check on number of arguments
+    bool donereading = false; //Have I read all the lines in the file?
+    FILE * fin = NULL; //Pointer to text file
+    char * lineptr; //Pointer to dynamically allocated string buffer with line
 
-    if (argc < 2)
+    //Initial sanity check on number of arguments
+    if (argc < 2) //No explicit args
     {
         //Create debug message only if expecting to use it.
         if (DEBUG) snprintf(debugbuffer, sizeof(debugbuffer), "Argument count: %d", argc);
@@ -48,8 +53,39 @@ int main(int argc, char** argv)
                   argv[0]);
     }
 
-#ifdef DEBUG
-//Pause to avoid console closing in debug mode.
+    if (argc > 4) //Too many explicit args
+    {
+        //Create debug message only if expecting to use it.
+        if (DEBUG) snprintf(debugbuffer, sizeof(debugbuffer), "Argument count: %d", argc);
+
+        ExitError(ecTooManyArguments, "Too many arguments. Did you forget quotation marks?",
+                  DEBUG ? debugbuffer : NULL,
+                  argv[0]);
+    }
+
+    //TODO: We could add some logic here to make sure that the
+    //arguments make sense before analyzing the file to prevent
+    //analyzing it and then throwing an argument error.
+
+    //If we get here, we potentially have a valid request
+    //First, attempt to open the file.
+
+    fin = fopen(argv[1],"r");
+    if(fin == NULL) //Error opening file
+    {
+        if(DEBUG) snprintf(debugbuffer,sizeof(debugbuffer),
+                           "I/O Error: errno %d attempting to open %s for reading.",
+                           errno, argv[1]);
+
+        ExitError(ecFileAccessError, "Unable to open file for reading.",
+                  DEBUG ? debugbuffer, NULL, argv[0]);
+    }
+
+    //Ok.  I have an open file.  Start parsing, line by line.
+    do {
+
+    }
+    //Pause to avoid console closing in debug mode.
     if (DEBUG)  //If DEBUG macro not 0
     {
         fflush(stdin); //Make sure there's nothing lurking in the buffer.
@@ -57,7 +93,6 @@ int main(int argc, char** argv)
         fflush(stdout);
         fgetc(stdin);
     }
-#endif //DEBUG
 
     return ecSuccess; //If we got here, all went well
 }
