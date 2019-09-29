@@ -31,16 +31,16 @@
  *           arg 3 - (Optional) - line number if 2b selected above.
  * Returns:  int - Program success status for POSIX OS
  * Description: Parses command-line arguments and passes output to
-
- *              console.
+ *              console. Main should trap all API errors, allowing
+ *              error handling to be primarily handled here.
  * ******************************************************************/
 
 int main(int argc, char** argv)
 {
     char debugbuffer[255] = ""; //Memory area for storing debug messages
-    bool donereading = false; //Have I read all the lines in the file?
+    bool doneReading = false; //Have I read all the lines in the file?
     FILE * fin = NULL; //Pointer to text file
-    char * lineptr; //Pointer to dynamically allocated string buffer with line
+    char * lineptr = NULL; //Pointer to dynamically allocated string buffer with line
 
     //Initial sanity check on number of arguments
     if (argc < 2) //No explicit args
@@ -78,13 +78,14 @@ int main(int argc, char** argv)
                            errno, argv[1]);
 
         ExitError(ecFileAccessError, "Unable to open file for reading.",
-                  DEBUG ? debugbuffer, NULL, argv[0]);
+                  DEBUG ? debugbuffer:NULL, argv[0]);
     }
 
     //Ok.  I have an open file.  Start parsing, line by line.
     do {
 
-    }
+    } while (!doneReading);
+
     //Pause to avoid console closing in debug mode.
     if (DEBUG)  //If DEBUG macro not 0
     {

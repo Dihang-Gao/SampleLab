@@ -30,6 +30,6 @@ Line LoadLine(char * szLine)
 
     //Get word count using strtok
     char delim[] = ""; //Word delimiters
-u
+
     return retval;
 }
