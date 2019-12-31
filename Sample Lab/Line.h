@@ -6,8 +6,8 @@
 *  File:       Line.h
 *  Project:    Lab 0
 *  Author:     AJ Armstrong
-*  Version:    1.0
-*  Date:       15 Oct 2014
+*  Version:    1.1
+*  Date:       10 Dec 2019
 *  Course:     CMPE1700
 *  Instructor: AJ Armstrong
 *  Description: Implementation of a structure to store the
@@ -30,6 +30,4 @@ typedef struct
 //Calculate statistics for a given line
 Line LoadLine(char * szLine);
 
-
-
-#endif
+#endif //LINEH

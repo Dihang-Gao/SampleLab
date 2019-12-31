@@ -2,8 +2,8 @@
 *  File:       ErrorCode.c
 *  Project:    Lab 0
 *  Author:     AJ Armstrong
-*  Version:    1.0
-*  Date:       29 Sep 2017
+*  Version:    1.1
+*  Date:       10 Dec 2019
 *  Course:     CMPE1700
 *  Instructor: AJ Armstrong
 *  Description: Implementation of support functions for error codes.

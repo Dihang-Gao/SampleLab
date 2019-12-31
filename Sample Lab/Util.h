@@ -17,6 +17,9 @@
 
 typedef unsigned int uint;
 typedef unsigned char byte;
+//☠ FIXME:AJA:20191120: C has had real bools since C99 (see stdbool.h)
+//        However, some of my environments don't support it, hence
+//        the little bit of nostalgia you see below.
 typedef enum {false = 0,true} bool;
 
 //Print an error message
@@ -34,4 +37,4 @@ void ExitError(ErrorCode ec, char const * const message,
                char const * const debug,
                char const * const appName);
 
-#endif
+#endif //UTILH

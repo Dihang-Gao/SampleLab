@@ -63,12 +63,12 @@ int main(int argc, char** argv)
                   argv[0]);
     }
 
-    //TODO: We could add some logic here to make sure that the
-    //arguments make sense before analyzing the file to prevent
-    //analyzing it and then throwing an argument error.
+    //✓ TODO: We could add some logic here to make sure that the
+    //  arguments make sense before analyzing the file to prevent
+    //  analyzing it and then throwing an argument error.
 
-    //If we get here, we potentially have a valid request
-    //First, attempt to open the file.
+    //  If we get here, we potentially have a valid request
+    //  First, attempt to open the file.
 
     fin = fopen(argv[1],"r");
     if(fin == NULL) //Error opening file

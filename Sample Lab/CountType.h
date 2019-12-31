@@ -6,8 +6,8 @@
 *  File:       CountType.h
 *  Project:    Lab 0
 *  Author:     AJ Armstrong
-*  Version:    1.0
-*  Date:       28 Sep 2017
+*  Version:    1.1
+*  Date:       10 Dec 2019
 *  Course:     CMPE1700
 *  Instructor: AJ Armstrong
 *  Description: Definition of an enumeration that indicates

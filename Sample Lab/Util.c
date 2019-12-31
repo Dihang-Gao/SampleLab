@@ -23,7 +23,7 @@
  * ******************************************************************/
 void PrintError(char const * const message)
 {
-    fprintf(stderr, ANSI_COLOR_RED "Error: " ANSI_COLOR_RESET);
+    fprintf(stderr, ANSI_COLOUR_RED "Error: " ANSI_COLOUR_RESET);
     fprintf(stderr, "%s", message);
     fprintf(stderr, "\n");
     fflush(stderr);
@@ -38,8 +38,8 @@ void PrintError(char const * const message)
  * ******************************************************************/
 void PrintErrorCode(ErrorCode ec)
 {
-    fprintf(stderr, ANSI_COLOR_RED "Error: " ANSI_COLOR_YELLOW);
-    fprintf(stderr, "%s" ANSI_COLOR_RESET, ErrorMessage(ec));
+    fprintf(stderr, ANSI_COLOUR_RED "Error: " ANSI_COLOUR_YELLOW);
+    fprintf(stderr, "%s" ANSI_COLOUR_RESET, ErrorMessage(ec));
     fprintf(stderr, "\n");
     fflush(stderr);
 }
@@ -55,8 +55,8 @@ void PrintErrorCode(ErrorCode ec)
  * ******************************************************************/
 void PrintErrorCodeMessage(ErrorCode ec, char const * const message)
 {
-    fprintf(stderr, ANSI_COLOR_RED "Error: " ANSI_COLOR_YELLOW);
-    fprintf(stderr, "%s" ANSI_COLOR_RESET, ErrorMessage(ec));
+    fprintf(stderr, ANSI_COLOUR_RED "Error: " ANSI_COLOUR_YELLOW);
+    fprintf(stderr, "%s" ANSI_COLOUR_RESET, ErrorMessage(ec));
     if(message && strlen(message) > 0)
         fprintf(stderr, " - %s", message);
     fprintf(stderr, "\n");
@@ -75,8 +75,8 @@ void PrintErrorCodeMessage(ErrorCode ec, char const * const message)
  * ******************************************************************/
 void PrintUsage(char const * const appname)
 {
-    printf(ANSI_COLOR_BLUE "Usage: " ANSI_COLOR_RESET);
-    //TODO:  Ensure ARGUMENTS message macro is defined
+    printf(ANSI_COLOUR_BLUE "Usage: " ANSI_COLOUR_RESET);
+    //✓ TODO:  Ensure ARGUMENTS message macro is defined
     printf("%s %s\n", appname, ARGUMENTS);
     fflush(stdout);
 }
@@ -100,7 +100,7 @@ void ExitError(ErrorCode ec, char const * const message,
     else PrintErrorCode(ec);
     if (debug && strlen(debug)) //Ditto.  Ansi colors depend on macro in Settings.h
     {
-        fprintf(stderr, ANSI_COLOR_YELLOW "Debug: " ANSI_COLOR_RESET);
+        fprintf(stderr, ANSI_COLOUR_YELLOW "Debug: " ANSI_COLOUR_RESET);
         fprintf(stderr, "%s", debug);
         fprintf(stderr, "\n");
         fflush(stderr);
