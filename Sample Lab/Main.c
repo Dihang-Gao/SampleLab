@@ -39,7 +39,7 @@ int main(int argc, char** argv)
 {
     char debugbuffer[255] = ""; //Memory area for storing debug messages
     bool doneReading = false; //Have I read all the lines in the file?
-    FILE * fin = NULL; //Pointer to text file
+    FILE * fi = NULL; //Pointer to text file
     char * lineptr = NULL; //Pointer to dynamically allocated string buffer with line
 
     //Initial sanity check on number of arguments
@@ -70,8 +70,8 @@ int main(int argc, char** argv)
     //  If we get here, we potentially have a valid request
     //  First, attempt to open the file.
 
-    fin = fopen(argv[1],"r");
-    if(fin == NULL) //Error opening file
+    fi = fopen(argv[1],"r");
+    if(fi == NULL) //Error opening file
     {
         if(DEBUG) snprintf(debugbuffer,sizeof(debugbuffer),
                            "I/O Error: errno %d attempting to open %s for reading.",
