@@ -83,7 +83,7 @@ int main(int argc, char** argv)
 
     //Ok.  I have an open file.  Start parsing, line by line.
     do {
-
+	
     } while (!doneReading);
 
     //Pause to avoid console closing in debug mode.
@@ -94,6 +94,6 @@ int main(int argc, char** argv)
         fflush(stdout);
         fgetc(stdin);
     }
-
+    // Clean up toys
     return ecSuccess; //If we got here, all went well
 }

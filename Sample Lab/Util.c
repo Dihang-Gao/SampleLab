@@ -3,7 +3,7 @@
 *  Project:    Lab 0
 *  Author:     AJ Armstrong
 *  Version:    1.0
-*  Date:       6 Sep 2017
+*  Date:       6 Jan 2020
 *  Course:     CMPE1700
 *  Instructor: AJ Armstrong
 *  Description: Implementation of general utility methods.
