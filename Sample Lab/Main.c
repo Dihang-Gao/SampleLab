@@ -83,7 +83,12 @@ int main(int argc, char** argv)
 
     //Ok.  I have an open file.  Start parsing, line by line.
     do {
-	
+	//RBF(aja)Test code. Remove for production.
+	char line[256];
+	if(DEBUG){ 
+		doneReading = fgets(line,sizeof(line),fi) == NULL ? 1 : 0;
+		printf("%s",line);
+	}
     } while (!doneReading);
 
     //Pause to avoid console closing in debug mode.
