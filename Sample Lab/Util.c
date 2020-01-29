@@ -107,6 +107,9 @@ void ExitError(ErrorCode ec, char const * const message,
     }
     if (appName && strlen(appName)) PrintUsage(appName);
 
+    //FIXME: Visual Studio appears to be automatically pausing at end
+    //       of console debug.  The DEBUG section below might not
+    //       be necessary any more.
     //Exit program with error
 #ifdef DEBUG
     fflush(stdin); //Make sure there's nothing lurking in the buffer.
